@@ -1,0 +1,23 @@
+---
+title: "Anjing's personal website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+## I have a webpage!
+
+In this webpage, you can see my resume and my basic information.
+
+
+Here's a direct link to the my resume page: [Resume](Resume.html).
+
+
+Here is my github account and I use R to do all of my homework: [github](https://github.com/al4225)
+
+
+Here is my email and feel to to [Contact Me](mailto:al4225@cumc.columbia.edu)
+
+## Plotly
+
+[Here's](plotly.html) a page with plotly plots.

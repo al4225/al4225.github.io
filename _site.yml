@@ -1,0 +1,15 @@
+name: "Anjing's personal website"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "Resume"
+      href: Resume.html
+    - icon: fa-envelope fa-lg
+      href: mailto:al4225@cumc.columbia.edu
+    - icon: fa-github fa-lg
+      href: http://github.com/al4225
+    - text: "plotly"
+      href: plotly.html
+output:
+  html_document
