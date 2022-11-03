@@ -4,20 +4,31 @@ output:
   html_document:
     toc: true
     toc_float: true
+    theme: cerulean
 ---
-## I have a webpage!
+## Basic information
 
 In this webpage, you can see my resume and my basic information.
 
 
-Here's a direct link to the my resume page: [Resume](Resume.html).
+Here's a direct link to the my [Resume](Resume.html) page.
 
 
-Here is my github account and I use R to do all of my homework: [github](https://github.com/al4225)
+Here is my [github](https://github.com/al4225/al4225hw4.github.io) account. I use R to do all of my homework and you can see HW4 in this page. 
 
 
-Here is my email and feel to to [Contact Me](mailto:al4225@cumc.columbia.edu)
+Here is my email and feel free to [contact Me](mailto:al4225@cumc.columbia.edu).
 
-## Plotly
+## Plotly and flexdashboard
 
-[Here's](plotly.html) a page with plotly plots.
+[Here's](flexdashboard.html) a page with flexdashboard plots.
+The data are from the rnoaa package. 
+
+### Mean_tmax line plot in January
+In this line plot, it shows the mean maximum temperature (degrees C) in January from 1981 to 2010. We can see that the average maximum temperature is between -5 and 5 °C. The lowest mean_tmax of Janurary is -5.09°C in 1994 and the highest mean_tmax of January is 4.74°C in 2006.
+
+### The number of observatons with prcp = 0 each year bar plot
+In this bar plot, I filter observations with zero precipitation per year in given weather stations. We see that from 1981 to 2010, the year with the least observations with 0 precipitation is 2003, and the year with the most observations with 0 precipitation is 1991. It reflects that the rainfall was the most frequent in 2003 and the least frequent in 1991. Generally, precipitation frequency increased from 2000 to 2010 compared to 1981 to 2000 regardless of the missing data.
+
+### tmax box plot for 4 stations
+In this boxplot, it contains tmax records from these 4 stations from 1981 to 2010. We can see that maximum temperature recorded in station USC00301595 is lowest and recorded in USC00305310 is highest. There are some outliers in USC00305310 and the others do not have any outliers.
