@@ -1,0 +1,88 @@
+---
+title: "Flexdashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    social: menu
+    source_code: embed
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+library(flexdashboard)
+data("ny_noaa")
+```
+
+
+```{r, include = FALSE}
+ny_noaa_data = 
+ny_noaa %>%
+  janitor::clean_names() %>%
+  separate(date, into  = c("year", "month", "day"), sep = "-") %>%
+  mutate(year = as.integer(year), 
+         month = as.integer(month),
+         day = as.integer(day), 
+         month = month.abb[month],
+         tmax = as.integer(tmax),
+         tmin = as.integer(tmin),
+         tmax = tmax / 10,
+         tmin = tmin / 10,
+         prcp = prcp / 10,
+         snow = snow * 25.4) 
+ny_noaa_data
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Mean_tmax line plot in January
+In this line plot, it shows the mean maximum temperature (°C) in January from 1981 to 2010.
+```{r, echo=FALSE}
+mean_tmax = 
+  ny_noaa_data %>%
+  filter(month == "Jan") %>%
+  group_by(year) %>%
+  drop_na() %>%
+  summarize(mean_tmax = mean(tmax)) %>%
+  mutate(text_label = str_c("mean_tmax:", mean_tmax, "\nyear:", year)) %>% 
+  plot_ly(x = ~year, y = ~mean_tmax, type = "scatter", mode = "lines",  text = ~text_label) %>%
+  layout(title = "Mean_tmax line plot in January")
+mean_tmax
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### The number of observatons with prcp = 0 each year bar plot
+In this bar plot, it shows observations with zero precipitation per year in given weather stations. 
+```{r, echo=FALSE}
+prcp_bar = 
+  ny_noaa_data %>%
+  drop_na() %>%
+  filter(prcp == 0) %>%
+  mutate(year = as.factor(as.numeric(year) )) %>%
+  count(year) %>%
+  mutate(year = fct_reorder(year, n))  %>% 
+  plot_ly(x = ~year, y = ~n, color = ~year, type = "bar", colors = "viridis") %>%
+  layout(title = "# of prcp = 0 each year bar plot")
+prcp_bar
+```
+
+### tmax box plot for 4 stations
+In this boxplot, it contains tmax recorded from these 4 stations from 1981 to 2010.
+```{r, echo=FALSE}
+tmax_box =
+ny_noaa_data %>%
+  drop_na() %>%
+  filter(id %in% c('USC00304025','USC00301595', "USC00305310", "USC00306820")) %>%
+  mutate(year = as.factor(as.numeric(year) )) %>%
+  mutate(id = fct_reorder(id, tmax)) %>%
+  plot_ly(y = ~tmax, color = ~id, type = "box", colors = "viridis") %>%
+  layout(title = "tmax box plot for 4 stations")
+
+tmax_box
+```
+
