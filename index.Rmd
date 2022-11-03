@@ -14,7 +14,7 @@ In this webpage, you can see my resume and my basic information.
 Here's a direct link to the my [Resume](Resume.html) page.
 
 
-Here is my [github](https://github.com/al4225/al4225hw4.github.io) account. I use R to do all of my homework and you can see HW4 in this page. 
+Here is my [github](https://github.com/al4225/al4225.github.io) account. I use R to do all of my homework and you can see HW4 in this page. 
 
 
 Here is my email and feel free to [contact Me](mailto:al4225@cumc.columbia.edu).
